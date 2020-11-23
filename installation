@@ -1,0 +1,44 @@
+# // Install and library packages
+install.packages("rtweet") # this is the main package we will be using to execute the pull
+install.packages("purrr") # helps R functionality
+install.packages("ggplot2") # not in use for this, but good know for plotting visual data 
+install.packages("httr") # GET rquests
+install.packages("dplyr") # cleansing data
+install.packages("data.table") # building tables
+library(rtweet) #
+library(purrr) 
+library(httr) 
+library(httr) 
+library(dplyr)
+library(data.table)
+
+
+# // Function to shortcut installation (if not already installed)
+if (!requireNamespace("remotes", quietly = TRUE)) { # install remotes package if it's not already 
+   install.packages("remotes")
+}
+
+# // Twitter Authentication
+api_key <- "[INSERT YOUR API KEY]" # store important keys (x4)
+api_secret_key <- "[INSERT YOUR SECRET KEY]"
+access_token <- "[INSERT YOUR ACCESS TOKEN]"
+access_token_secret <- "[INSERT YOUR TOKEN SECRET]"
+
+# // Create Token
+token <- create_token(   ## authenticate Twitter APIs via web browser
+   app = "[INSERT NAME OF YOUR APP]",
+   consumer_key = api_key,
+   consumer_secret = api_secret_key,
+   access_token = access_token,
+   access_secret = access_token_secret)
+
+# // Fetch tokens
+token <- get_tokens() # test authentication
+token # print token, should list <oauth_app> ['Name of App']
+
+
+# // pulling data for 2020-11-10, -- Nov. 10)
+s <- as.Date(Sys.Date()-3, format = "%Y/%m/%d") # function that formats x day ago as start date
+e <- as.Date(Sys.Date()-2, format = "%Y/%m/%d") # function that formats the end date (date x, -2)
+
+
